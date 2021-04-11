@@ -2,6 +2,15 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
 
+function SafeHydrate({ children }) {
+	// This prevents the app from rendering on the server
+	return (
+		<div suppressHydrationWarning>
+			{typeof window === 'undefined' ? null : children}
+		</div>
+	);
+}
+
 function App({ Component, pageProps }) {
 	return (
 		<>
@@ -15,9 +24,11 @@ function App({ Component, pageProps }) {
 				/>
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
-			<ChakraProvider>
-				<Component {...pageProps} />
-			</ChakraProvider>
+			<SafeHydrate>
+				<ChakraProvider>
+					<Component {...pageProps} />
+				</ChakraProvider>
+			</SafeHydrate>
 		</>
 	);
 }
