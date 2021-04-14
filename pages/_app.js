@@ -1,6 +1,17 @@
 import '../styles/globals.css';
 import Head from 'next/head';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+
+const theme = extendTheme({
+	colors: {
+		orange: {
+			light: '#fedead',
+			lightHover: '#f2e3cb',
+			dark: '#fe9123',
+			darkHover: '#eb9138',
+		},
+	},
+});
 
 function SafeHydrate({ children }) {
 	// This prevents the app from rendering on the server
@@ -25,7 +36,7 @@ function App({ Component, pageProps }) {
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
 			<SafeHydrate>
-				<ChakraProvider>
+				<ChakraProvider theme={theme}>
 					<Component {...pageProps} />
 				</ChakraProvider>
 			</SafeHydrate>

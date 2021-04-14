@@ -1,0 +1,16 @@
+.content {
+	margin-top: 1.5rem;
+	font-size: 18px;
+
+	p {
+		margin-bottom: 0.75rem;
+
+		a {
+			color: #95c0ed;
+
+			&:hover {
+				color: #8ab3de;
+			}
+		}
+	}
+}
