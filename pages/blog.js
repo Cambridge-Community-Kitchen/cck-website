@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 
-import LayoutContainer from '@components/layout-container';
+import LayoutContainer from '../components/layout-container';
 
 const Blog = ({ posts }) => {
 	return (

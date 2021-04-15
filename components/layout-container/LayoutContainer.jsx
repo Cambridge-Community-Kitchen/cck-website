@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@chakra-ui/react';
 
-import Nav from '@components/nav';
-import Footer from '@components/footer';
+import Nav from '../nav';
+import Footer from '../footer';
 
 const LayoutContainer = ({ children }) => {
 	return (
