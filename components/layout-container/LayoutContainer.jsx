@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 
 import Nav from '../nav';
-import Footer from '../footer/Footer.jsx';
+import Footer from '@/components/footer';
 
 const LayoutContainer = ({ children }) => {
 	return (
