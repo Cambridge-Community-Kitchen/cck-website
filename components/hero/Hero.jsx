@@ -48,10 +48,9 @@ const Hero = () => {
 						<Text as={'span'}>deserves food and community support</Text>
 					</Heading>
 					<Text color={'gray.500'}>
-						We are a food solidarity collective dedicated to making sure no one
-						goes hungry in Cambridge. We provide free plant-based meals to
-						members of the community who are facing hardship due to the
-						pandemic.
+						We are a food solidarity collective tackling food poverty in
+						Cambridge by offering free, hot, plant-based meals to those who need
+						them every Tuesday, Thursday and Sunday.
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}

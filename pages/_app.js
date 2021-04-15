@@ -33,6 +33,15 @@ function App({ Component, pageProps }) {
 					name="viewport"
 					content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
 				/>
+				<meta property="og:type" content="website" />
+				<meta property="og:site_name" content="Cambridge Community Kitchen" />
+				<meta property="fb:pages" content="113945517195261" />
+				<meta name="twitter:url" content="https://cckitchen.uk" />
+				<meta name="twitter:site" content="@camcommunity" />
+				<meta
+					property="article:publisher"
+					content="https://www.facebook.com/cambridgecommunitykitchen"
+				/>
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
 			<SafeHydrate>
