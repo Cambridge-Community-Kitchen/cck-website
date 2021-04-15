@@ -19,7 +19,7 @@ const Blog = ({ posts }) => {
 	return (
 		<LayoutContainer>
 			<Flex justifyContent="center">
-				<Box maxWidth={useBreakpointValue({ base: '90%', md: '850px' })}>
+				<Box maxWidth={useBreakpointValue({ base: '90%', md: '850px' })} mb={8}>
 					<Heading mb={8}>CCK Blog</Heading>
 					<Grid
 						templateColumns={useBreakpointValue({

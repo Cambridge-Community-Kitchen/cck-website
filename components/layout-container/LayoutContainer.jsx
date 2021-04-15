@@ -11,7 +11,7 @@ const LayoutContainer = ({ children }) => {
 				mt="1rem"
 				minHeight={useBreakpointValue({
 					base: 'calc(100vh - 186px)',
-					md: 'calc(100vh - 140px)',
+					lg: 'calc(100vh - 140px)',
 				})}
 			>
 				{children}
