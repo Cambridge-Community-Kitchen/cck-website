@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box } from '@chakra-ui/react';
 
 import Nav from '@components/nav';
@@ -13,10 +12,6 @@ const LayoutContainer = ({ children }) => {
 			<Footer />
 		</div>
 	);
-};
-
-LayoutContainer.propTypes = {
-	children: PropTypes.node,
 };
 
 export default LayoutContainer;
