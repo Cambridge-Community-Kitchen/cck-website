@@ -10,7 +10,7 @@ const LayoutContainer = ({ children }) => {
 			<Box
 				mt="1rem"
 				minHeight={useBreakpointValue({
-					base: 'calc(100vh - 170px)',
+					base: 'calc(100vh - 186px)',
 					md: 'calc(100vh - 140px)',
 				})}
 			>
