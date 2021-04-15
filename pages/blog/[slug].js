@@ -10,8 +10,6 @@ import styles from './post.module.scss';
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
 const Post = ({ post }) => {
-	console.log(post.content);
-
 	return (
 		<LayoutContainer>
 			<Flex flexDirection="column" alignItems="center" py={6}>
@@ -20,7 +18,7 @@ const Post = ({ post }) => {
 						<Image src={post.coverImage.url} layout="fill" objectFit="cover" />
 					</Box>
 					<Heading>{post.title}</Heading>
-					<span>{dayjs(post.date).format('MMM DD, YYYY')}</span>
+					<time>{dayjs(post.date).format('MMM DD, YYYY')}</time>
 					<ReactMarkdown className={styles.content}>
 						{post.content.markdown}
 					</ReactMarkdown>

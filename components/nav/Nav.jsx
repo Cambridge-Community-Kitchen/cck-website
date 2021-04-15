@@ -56,13 +56,15 @@ export default function WithSubnavigation() {
 						/>
 					</Flex>
 					<Flex alignItems="center" justify={{ base: 'center', md: 'start' }}>
-						<Link as={NextLink} display="flex" alignItems="center" href="/">
-							<Image
-								alt="Cambridge Community Kitchen logo"
-								src="/cck-simple.png"
-								width="36"
-								height="30"
-							/>
+						<Link as={NextLink} href="/">
+							<a>
+								<Image
+									alt="Cambridge Community Kitchen logo"
+									src="/cck-simple.png"
+									width="36"
+									height="30"
+								/>
+							</a>
 						</Link>
 
 						<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -72,16 +74,14 @@ export default function WithSubnavigation() {
 				</Flex>
 
 				<Link
-					as={NextLink}
 					href="https://opencollective.com/cambridge-community-kitchen"
+					isExternal
 				>
 					<Button
-						// display={{ base: 'none', md: 'inline-flex' }}
 						fontSize={'sm'}
 						fontWeight={600}
 						color={'white'}
 						bg={'green.400'}
-						href={'#'}
 						_hover={{
 							bg: 'green.300',
 						}}
@@ -102,11 +102,10 @@ const DesktopNav = () => {
 	return (
 		<Stack direction={'row'} spacing={4}>
 			{NAV_ITEMS.map((navItem) => (
-				<Flex key={navItem.label}>
+				<Flex key={navItem.label} mr={6}>
 					<Popover trigger={'hover'} placement={'bottom-start'}>
 						<PopoverTrigger>
 							<Link
-								as={NextLink}
 								p={2}
 								href={navItem.href ?? '#'}
 								fontSize="md"

@@ -31,7 +31,7 @@ const Blog = ({ posts }) => {
 					>
 						{posts.map((post) => {
 							return (
-								<Link as={NextLink} href={`blog/${post.slug}`}>
+								<Link as={NextLink} href={`blog/${post.slug}`} key={post.slug}>
 									<Box
 										cursor="pointer"
 										maxW={'445px'}
@@ -39,7 +39,6 @@ const Blog = ({ posts }) => {
 										bg={useColorModeValue('white', 'gray.900')}
 										boxShadow="xl"
 										rounded={'md'}
-										key={post.slug}
 										p={6}
 										overflow={'hidden'}
 										transition="transform 300ms ease-in-out, box-shadow 300ms ease-in-out"
@@ -78,7 +77,7 @@ const Blog = ({ posts }) => {
 											align={'center'}
 										>
 											<Stack direction={'column'} spacing={0} fontSize={'sm'}>
-												<Text color={'gray.500'}>
+												<Text as="time" color={'gray.500'}>
 													{dayjs(post.date).format('MMM DD, YYYY')}
 												</Text>
 											</Stack>

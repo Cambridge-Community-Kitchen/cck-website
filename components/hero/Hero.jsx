@@ -57,7 +57,7 @@ const Hero = () => {
 						spacing={{ base: 4, sm: 6 }}
 						direction={{ base: 'column', sm: 'row' }}
 					>
-						<Link href="https://bit.ly/CCKnewvolunteers">
+						<Link href="https://bit.ly/CCKnewvolunteers" isExternal>
 							<Button
 								rounded="full"
 								size="lg"
@@ -70,7 +70,7 @@ const Hero = () => {
 								Volunteer
 							</Button>
 						</Link>
-						<Link href="https://bit.ly/CCKrequest">
+						<Link href="https://bit.ly/CCKrequest" isExternal>
 							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
 								Request meals
 							</Button>
