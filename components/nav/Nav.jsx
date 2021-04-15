@@ -12,7 +12,6 @@ import {
 	PopoverTrigger,
 	PopoverContent,
 	useColorModeValue,
-	useBreakpointValue,
 	useDisclosure,
 } from '@chakra-ui/react';
 import {
@@ -37,40 +36,43 @@ export default function WithSubnavigation() {
 				borderBottom={1}
 				borderStyle={'solid'}
 				borderColor={useColorModeValue('gray.200', 'gray.900')}
-				align={'center'}
+				align="center"
+				justifyContent="space-between"
 			>
-				<Flex
-					flex={{ base: 1, md: 'auto' }}
-					ml={{ base: -2 }}
-					display={{ base: 'flex', md: 'none' }}
-				>
-					<IconButton
-						onClick={onToggle}
-						icon={
-							isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-						}
-						variant={'ghost'}
-						aria-label={'Toggle Navigation'}
-					/>
-				</Flex>
-				<Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-					<Link href="/">
-						<Image
-							alt="Cambridge Community Kitchen logo"
-							src="/cck-logo-round.png"
-							width="36"
-							height="36"
+				<Flex flexBasis="55%" justifyContent="space-between">
+					<Flex ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
+						<IconButton
+							onClick={onToggle}
+							icon={
+								isOpen ? (
+									<CloseIcon w={3} h={3} />
+								) : (
+									<HamburgerIcon w={5} h={5} />
+								)
+							}
+							variant={'ghost'}
+							aria-label={'Toggle Navigation'}
 						/>
-					</Link>
+					</Flex>
+					<Flex alignItems="center" justify={{ base: 'center', md: 'start' }}>
+						<Link display="flex" alignItems="center" href="/">
+							<Image
+								alt="Cambridge Community Kitchen logo"
+								src="/cck-simple.png"
+								width="36"
+								height="30"
+							/>
+						</Link>
 
-					<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-						<DesktopNav />
+						<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+							<DesktopNav />
+						</Flex>
 					</Flex>
 				</Flex>
 
 				<Link href="https://opencollective.com/cambridge-community-kitchen">
 					<Button
-						display={{ base: 'none', md: 'inline-flex' }}
+						// display={{ base: 'none', md: 'inline-flex' }}
 						fontSize={'sm'}
 						fontWeight={600}
 						color={'white'}
