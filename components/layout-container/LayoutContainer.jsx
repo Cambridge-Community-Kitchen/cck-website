@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@chakra-ui/react';
 
 import Nav from '../nav';
-import Footer from '../footer';
+import Footer from '../footer/Footer.jsx';
 
 const LayoutContainer = ({ children }) => {
 	return (
