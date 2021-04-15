@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import NextLink from 'next/link';
 import { GraphQLClient } from 'graphql-request';
 import {
 	Box,
@@ -30,8 +31,9 @@ const Blog = ({ posts }) => {
 					>
 						{posts.map((post) => {
 							return (
-								<Link href={`blog/${post.slug}`}>
+								<Link as={NextLink} href={`blog/${post.slug}`}>
 									<Box
+										cursor="pointer"
 										maxW={'445px'}
 										w={'full'}
 										bg={useColorModeValue('white', 'gray.900')}

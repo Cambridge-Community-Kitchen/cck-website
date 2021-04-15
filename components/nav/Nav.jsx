@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import {
 	Box,
 	Flex,
@@ -55,7 +56,7 @@ export default function WithSubnavigation() {
 						/>
 					</Flex>
 					<Flex alignItems="center" justify={{ base: 'center', md: 'start' }}>
-						<Link display="flex" alignItems="center" href="/">
+						<Link as={NextLink} display="flex" alignItems="center" href="/">
 							<Image
 								alt="Cambridge Community Kitchen logo"
 								src="/cck-simple.png"
@@ -70,7 +71,10 @@ export default function WithSubnavigation() {
 					</Flex>
 				</Flex>
 
-				<Link href="https://opencollective.com/cambridge-community-kitchen">
+				<Link
+					as={NextLink}
+					href="https://opencollective.com/cambridge-community-kitchen"
+				>
 					<Button
 						// display={{ base: 'none', md: 'inline-flex' }}
 						fontSize={'sm'}
@@ -102,6 +106,7 @@ const DesktopNav = () => {
 					<Popover trigger={'hover'} placement={'bottom-start'}>
 						<PopoverTrigger>
 							<Link
+								as={NextLink}
 								p={2}
 								href={navItem.href ?? '#'}
 								fontSize="md"
@@ -111,7 +116,7 @@ const DesktopNav = () => {
 									textDecoration: 'none',
 									color: useColorModeValue('gray.800', 'white'),
 								}}
-								target={navItem.newWindow ? '_blank' : ''}
+								isExternal={navItem.newWindow}
 							>
 								{navItem.label}
 							</Link>
@@ -143,6 +148,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }) => {
 	return (
 		<Link
+			as={NextLink}
 			href={href}
 			role={'group'}
 			display={'block'}
@@ -234,7 +240,7 @@ const MobileNavItem = ({ label, children, href }) => {
 				>
 					{children &&
 						children.map((child) => (
-							<Link key={child.label} py={2} href={child.href}>
+							<Link as={NextLink} key={child.label} py={2} href={child.href}>
 								{child.label}
 							</Link>
 						))}
