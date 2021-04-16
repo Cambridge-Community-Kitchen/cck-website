@@ -13,6 +13,11 @@ class UpdatedDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
+					<script
+						async
+						defer
+						src="https://scripts.withcabin.com/hello.js"
+					></script>
 				</body>
 			</Html>
 		);
