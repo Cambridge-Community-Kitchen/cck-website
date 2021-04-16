@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Error from 'next/error';
 import { GraphQLClient } from 'graphql-request';
 import { Box, Heading, Flex, useBreakpointValue } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
@@ -11,6 +13,26 @@ import styles from './post.module.scss';
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
 const Post = ({ post }) => {
+	const router = useRouter();
+	if (router.isFallback) {
+		return (
+			<LayoutContainer>
+				<h1>Please wait…</h1>
+			</LayoutContainer>
+		);
+	}
+
+	if (!post.content) {
+		return (
+			<LayoutContainer>
+				<Head>
+					<meta name="robots" content="noindex" />
+				</Head>
+				<Error statusCode={404} />
+			</LayoutContainer>
+		);
+	}
+
 	return (
 		<>
 			<Head>

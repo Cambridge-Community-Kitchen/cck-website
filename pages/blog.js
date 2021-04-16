@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import NextLink from 'next/link';
+import Head from 'next/head';
 import { GraphQLClient } from 'graphql-request';
 import {
 	Box,
@@ -18,78 +19,94 @@ import LayoutContainer from '@components/layout-container';
 
 const Blog = ({ posts }) => {
 	return (
-		<LayoutContainer>
-			<Flex justifyContent="center">
-				<Box maxWidth={useBreakpointValue({ base: '90%', md: '850px' })} mb={8}>
-					<Heading mb={8}>CCK Blog</Heading>
-					<Grid
-						templateColumns={useBreakpointValue({
-							base: 'repeat(1, 1fr)',
-							md: 'repeat(2, 1fr)',
-						})}
-						gap={useBreakpointValue({ base: 8, md: 16 })}
+		<>
+			<Head>
+				<meta
+					property="og:title"
+					content="Blog | Cambridge Community Kitchen"
+				/>
+				<title>Blog | Cambridge Community Kitchen</title>
+			</Head>
+			<LayoutContainer>
+				<Flex justifyContent="center">
+					<Box
+						maxWidth={useBreakpointValue({ base: '90%', md: '850px' })}
+						mb={8}
 					>
-						{posts.map((post) => {
-							return (
-								<Link as={NextLink} href={`blog/${post.slug}`} key={post.slug}>
-									<Box
-										cursor="pointer"
-										maxW={'445px'}
-										w={'full'}
-										bg={useColorModeValue('white', 'gray.900')}
-										boxShadow="xl"
-										rounded={'md'}
-										p={6}
-										overflow={'hidden'}
-										transition="transform 300ms ease-in-out, box-shadow 300ms ease-in-out"
-										_hover={{ boxShadow: '2xl' }}
+						<Heading mb={8}>CCK Blog</Heading>
+						<Grid
+							templateColumns={useBreakpointValue({
+								base: 'repeat(1, 1fr)',
+								md: 'repeat(2, 1fr)',
+							})}
+							gap={useBreakpointValue({ base: 8, md: 16 })}
+						>
+							{posts.map((post) => {
+								return (
+									<Link
+										as={NextLink}
+										href={`blog/${post.slug}`}
+										key={post.slug}
 									>
 										<Box
-											h={'210px'}
-											bg={'gray.100'}
-											mt={-6}
-											mx={-6}
-											mb={6}
-											pos={'relative'}
+											cursor="pointer"
+											maxW={'445px'}
+											w={'full'}
+											bg={useColorModeValue('white', 'gray.900')}
+											boxShadow="xl"
+											rounded={'md'}
+											p={6}
+											overflow={'hidden'}
+											transition="transform 300ms ease-in-out, box-shadow 300ms ease-in-out"
+											_hover={{ boxShadow: '2xl' }}
 										>
-											<Image
-												src={post.coverImage.url}
-												layout="fill"
-												objectFit="cover"
-											/>
-										</Box>
-										<Stack>
-											<Heading
-												color={useColorModeValue('gray.700', 'white')}
-												fontSize={'2xl'}
-												fontFamily={'body'}
+											<Box
+												h={'210px'}
+												bg={'gray.100'}
+												mt={-6}
+												mx={-6}
+												mb={6}
+												pos={'relative'}
 											>
-												{post.title}
-											</Heading>
-											<Text color={'gray.500'} minHeight="72px">
-												{post.excerpt}
-											</Text>
-										</Stack>
-										<Stack
-											mt={6}
-											direction={'row'}
-											spacing={4}
-											align={'center'}
-										>
-											<Stack direction={'column'} spacing={0} fontSize={'sm'}>
-												<Text as="time" color={'gray.500'}>
-													{dayjs(post.date).format('MMM DD, YYYY')}
+												<Image
+													src={post.coverImage.url}
+													layout="fill"
+													objectFit="cover"
+												/>
+											</Box>
+											<Stack>
+												<Heading
+													color={useColorModeValue('gray.700', 'white')}
+													fontSize={'2xl'}
+													fontFamily={'body'}
+												>
+													{post.title}
+												</Heading>
+												<Text color={'gray.500'} minHeight="72px">
+													{post.excerpt}
 												</Text>
 											</Stack>
-										</Stack>
-									</Box>
-								</Link>
-							);
-						})}
-					</Grid>
-				</Box>
-			</Flex>
-		</LayoutContainer>
+											<Stack
+												mt={6}
+												direction={'row'}
+												spacing={4}
+												align={'center'}
+											>
+												<Stack direction={'column'} spacing={0} fontSize={'sm'}>
+													<Text as="time" color={'gray.500'}>
+														{dayjs(post.date).format('MMM DD, YYYY')}
+													</Text>
+												</Stack>
+											</Stack>
+										</Box>
+									</Link>
+								);
+							})}
+						</Grid>
+					</Box>
+				</Flex>
+			</LayoutContainer>
+		</>
 	);
 };
 

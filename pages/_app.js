@@ -26,8 +26,6 @@ function App({ Component, pageProps }) {
 	return (
 		<>
 			<Head>
-				<title>Cambridge Community Kitchen</title>
-				<meta property="og:title" content="Cambridge Community Kitchen" />
 				<meta charSet="utf-8" />
 				<meta
 					name="viewport"
@@ -43,6 +41,7 @@ function App({ Component, pageProps }) {
 					content="https://www.facebook.com/cambridgecommunitykitchen"
 				/>
 				{/* <link rel="icon" href="/favicon.ico" /> */}
+				{/* <meta name="theme-color" content="#2b8186" /> */}
 			</Head>
 			<SafeHydrate>
 				<ChakraProvider theme={theme}>
