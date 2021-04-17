@@ -16,7 +16,7 @@ class UpdatedDocument extends Document {
 					<script
 						async
 						defer
-						src="https://scripts.withcabin.com/hello.js"
+						src="https://cabin.cckitchen.uk/hello.js"
 					></script>
 				</body>
 			</Html>
