@@ -36,8 +36,13 @@ const Post = ({ post }) => {
 	return (
 		<>
 			<Head>
-				{post.coverImage.url && (
+				{false ? (
 					<meta property="og:image" content={post.coverImage.url} />
+				) : (
+					<meta
+						property="og:image"
+						content="https://cckitchen.uk/preview.png"
+					/>
 				)}
 				{post.excerpt && (
 					<>
@@ -50,6 +55,8 @@ const Post = ({ post }) => {
 					content={`${post.title} | Cambridge Community Kitchen`}
 				/>
 				<title>{`${post.title} | Cambridge Community Kitchen`}</title>
+				<meta property="og:type" content="article" />
+				{/* <meta property="og:url" */}
 			</Head>
 			<LayoutContainer>
 				<Flex flexDirection="column" alignItems="center" py={6}>
