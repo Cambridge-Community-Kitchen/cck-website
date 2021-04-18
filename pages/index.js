@@ -8,6 +8,7 @@ export default function Home() {
 			<Head>
 				<meta property="og:title" content="Cambridge Community Kitchen" />
 				<title>Cambridge Community Kitchen</title>
+				<meta property="og:type" content="article" />
 			</Head>
 			<LayoutContainer>
 				<Hero />

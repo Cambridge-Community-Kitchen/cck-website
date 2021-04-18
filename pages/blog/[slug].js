@@ -36,14 +36,15 @@ const Post = ({ post }) => {
 	return (
 		<>
 			<Head>
-				{false ? (
+				<meta property="og:image" content="https://cckitchen.uk/preview.png" />
+				{/* {false ? (
 					<meta property="og:image" content={post.coverImage.url} />
 				) : (
 					<meta
 						property="og:image"
 						content="https://cckitchen.uk/preview.png"
 					/>
-				)}
+				)} */}
 				{post.excerpt && (
 					<>
 						<meta property="og:description" content={post.excerpt} />

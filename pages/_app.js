@@ -13,14 +13,14 @@ const theme = extendTheme({
 	},
 });
 
-function SafeHydrate({ children }) {
-	// This prevents the app from rendering on the server
-	return (
-		<div suppressHydrationWarning>
-			{typeof window === 'undefined' ? null : children}
-		</div>
-	);
-}
+// function SafeHydrate({ children }) {
+// 	// This prevents the app from rendering on the server
+// 	return (
+// 		<div suppressHydrationWarning>
+// 			{typeof window === 'undefined' ? null : children}
+// 		</div>
+// 	);
+// }
 
 function App({ Component, pageProps }) {
 	return (
@@ -31,7 +31,6 @@ function App({ Component, pageProps }) {
 					name="viewport"
 					content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
 				/>
-				<meta property="og:type" content="website" />
 				<meta property="og:site_name" content="Cambridge Community Kitchen" />
 				<meta property="fb:pages" content="113945517195261" />
 				<meta name="twitter:url" content="https://cckitchen.uk" />
@@ -43,11 +42,9 @@ function App({ Component, pageProps }) {
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 				{/* <meta name="theme-color" content="#2b8186" /> */}
 			</Head>
-			<SafeHydrate>
-				<ChakraProvider theme={theme}>
-					<Component {...pageProps} />
-				</ChakraProvider>
-			</SafeHydrate>
+			<ChakraProvider theme={theme}>
+				<Component {...pageProps} />
+			</ChakraProvider>
 		</>
 	);
 }
