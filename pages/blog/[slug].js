@@ -13,44 +13,43 @@ import styles from './post.module.scss';
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
 const Post = ({ post }) => {
-	const router = useRouter();
-	if (router.isFallback) {
-		return (
-			<LayoutContainer>
-				<h1>Please wait…</h1>
-			</LayoutContainer>
-		);
-	}
+	// const router = useRouter();
+	// if (router.isFallback) {
+	// 	return (
+	// 		<LayoutContainer>
+	// 			<h1>Please wait…</h1>
+	// 		</LayoutContainer>
+	// 	);
+	// }
 
-	if (!post.content) {
-		return (
-			<LayoutContainer>
-				<Head>
-					<meta name="robots" content="noindex" />
-				</Head>
-				<Error statusCode={404} />
-			</LayoutContainer>
-		);
-	}
+	// if (!post.content) {
+	// 	return (
+	// 		<LayoutContainer>
+	// 			<Head>
+	// 				<meta name="robots" content="noindex" />
+	// 			</Head>
+	// 			<Error statusCode={404} />
+	// 		</LayoutContainer>
+	// 	);
+	// }
 
 	return (
 		<>
 			<Head>
-				<meta property="og:image" content="https://cckitchen.uk/preview.png" />
-				{/* {false ? (
+				{post.coverImage.url ? (
 					<meta property="og:image" content={post.coverImage.url} />
 				) : (
 					<meta
 						property="og:image"
 						content="https://cckitchen.uk/preview.png"
 					/>
-				)} */}
-				{/* {post.excerpt && (
+				)}
+				{post.excerpt && (
 					<>
 						<meta property="og:description" content={post.excerpt} />
 						<meta name="description" content={post.excerpt} />
 					</>
-				)} */}
+				)}
 				<meta
 					property="og:title"
 					content={`${post.title} | Cambridge Community Kitchen`}
