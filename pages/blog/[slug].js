@@ -36,9 +36,15 @@ const Post = ({ post }) => {
 	return (
 		<>
 			<Head>
-				<meta property="og:image" content={post.coverImage.url} />
-				<meta property="og:description" content={post.excerpt} />
-				<meta name="description" content={post.excerpt} />
+				{post.coverImage.url && (
+					<meta property="og:image" content={post.coverImage.url} />
+				)}
+				{post.excerpt && (
+					<>
+						<meta property="og:description" content={post.excerpt} />
+						<meta name="description" content={post.excerpt} />
+					</>
+				)}
 				<meta
 					property="og:title"
 					content={`${post.title} | Cambridge Community Kitchen`}
