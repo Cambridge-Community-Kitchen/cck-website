@@ -45,19 +45,18 @@ const Post = ({ post }) => {
 						content="https://cckitchen.uk/preview.png"
 					/>
 				)} */}
-				{post.excerpt && (
+				{/* {post.excerpt && (
 					<>
 						<meta property="og:description" content={post.excerpt} />
 						<meta name="description" content={post.excerpt} />
 					</>
-				)}
+				)} */}
 				<meta
 					property="og:title"
 					content={`${post.title} | Cambridge Community Kitchen`}
 				/>
 				<title>{`${post.title} | Cambridge Community Kitchen`}</title>
 				<meta property="og:type" content="article" />
-				{/* <meta property="og:url" */}
 			</Head>
 			<LayoutContainer>
 				<Flex flexDirection="column" alignItems="center" py={6}>
