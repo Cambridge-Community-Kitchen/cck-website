@@ -1,4 +1,4 @@
-import Document, { Html, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class UpdatedDocument extends Document {
 	static async getInitialProps(ctx) {
@@ -9,6 +9,7 @@ class UpdatedDocument extends Document {
 	render() {
 		return (
 			<Html lang="en-GB">
+				<Head />
 				<body>
 					<Main />
 					<NextScript />
