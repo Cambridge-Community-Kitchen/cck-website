@@ -54,10 +54,10 @@ const Post = ({ post }) => {
 					property="og:title"
 					content={`${post.title} | Cambridge Community Kitchen`}
 				/>
-				<meta
+				{/* <meta
 					property="og:url"
 					content={`https://cckitchen.uk/blog/${post.slug}`}
-				/>
+				/> */}
 				<meta property="og:type" content="article" />
 				<title>{`${post.title} | Cambridge Community Kitchen`}</title>
 			</Head>

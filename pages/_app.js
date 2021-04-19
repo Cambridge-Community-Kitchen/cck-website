@@ -39,6 +39,7 @@ function App({ Component, pageProps }) {
 					property="article:publisher"
 					content="https://www.facebook.com/cambridgecommunitykitchen"
 				/>
+				<meta property="og:url" content="" />
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 				{/* <meta name="theme-color" content="#2b8186" /> */}
 			</Head>
