@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import dayjs from 'dayjs';
 
 import LayoutContainer from '@components/layout-container';
-// import styles from './post.module.scss';
+import styles from './post.module.scss';
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
@@ -69,7 +69,9 @@ const Post = ({ post }) => {
 						</Box>
 						<Heading>{post.title}</Heading>
 						<time>{dayjs(post.date).format('MMM DD, YYYY')}</time>
-						<ReactMarkdown>{post.content.markdown}</ReactMarkdown>
+						<ReactMarkdown className={styles.content}>
+							{post.content.markdown}
+						</ReactMarkdown>
 					</Box>
 				</Flex>
 			</LayoutContainer>
@@ -77,7 +79,7 @@ const Post = ({ post }) => {
 	);
 };
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
 	try {
 		const { post } = await graphcms.request(
 			`
@@ -99,8 +101,6 @@ export async function getServerSideProps({ params }) {
 			},
 		);
 
-		console.log(post);
-
 		return {
 			props: {
 				post,
@@ -120,9 +120,11 @@ export async function getStaticPaths() {
 		}
 	}`);
 
+	const paths = posts.map(({ slug }) => `/blog/${slug}`);
+
 	return {
-		paths: posts.map(({ slug }) => ({ params: { slug } })),
-		fallback: true,
+		paths,
+		fallback: false,
 	};
 }
 
