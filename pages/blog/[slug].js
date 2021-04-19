@@ -54,8 +54,12 @@ const Post = ({ post }) => {
 					property="og:title"
 					content={`${post.title} | Cambridge Community Kitchen`}
 				/>
-				<title>{`${post.title} | Cambridge Community Kitchen`}</title>
+				<meta
+					property="og:url"
+					content={`https://cckitchen.uk/blog/${post.slug}`}
+				/>
 				<meta property="og:type" content="article" />
+				<title>{`${post.title} | Cambridge Community Kitchen`}</title>
 			</Head>
 			<LayoutContainer>
 				<Flex flexDirection="column" alignItems="center" py={6}>
@@ -88,6 +92,7 @@ export async function getStaticProps({ params }) {
 					title
 					date
 					excerpt
+					slug
 					content {
 						markdown
 					}

@@ -26,7 +26,8 @@ const Blog = ({ posts }) => {
 					content="Blog | Cambridge Community Kitchen"
 				/>
 				<title>Blog | Cambridge Community Kitchen</title>
-				<meta property="og:type" content="article" />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://cckitchen.uk/blog" />
 			</Head>
 			<LayoutContainer>
 				<Flex justifyContent="center">
