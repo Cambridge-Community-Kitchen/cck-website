@@ -22,7 +22,7 @@ const Post = ({ post }) => {
 		);
 	}
 
-	if (!post.content) {
+	if (!post.content || post.notFound) {
 		return (
 			<LayoutContainer>
 				<Head>
@@ -77,35 +77,39 @@ const Post = ({ post }) => {
 	);
 };
 
-export default Post;
-
-export async function getStaticProps({ params }) {
-	const { post } = await graphcms.request(
-		`
-		query ProductPageQuery($slug: String!){
-			post(where: {slug: $slug}) {
-				title
-				date
-				excerpt
-				content {
-					markdown
+export async function getServerSideProps({ params }) {
+	try {
+		const { post } = await graphcms.request(
+			`
+			query BlogPostQuery($slug: String!){
+				post(where: {slug: $slug}) {
+					title
+					date
+					excerpt
+					content {
+						markdown
+					}
+					coverImage {
+						url
+					}
 				}
-				coverImage {
-					url
-				}
-			}
-		}`,
-		{
-			slug: params.slug,
-		},
-	);
+			}`,
+			{
+				slug: params.slug,
+			},
+		);
 
-	return {
-		props: {
-			post,
-			revalidate: 10,
-		},
-	};
+		console.log(post);
+
+		return {
+			props: {
+				post,
+				revalidate: 10,
+			},
+		};
+	} catch (error) {
+		return { props: { post: { notFound: true } } };
+	}
 }
 
 export async function getStaticPaths() {
@@ -121,3 +125,5 @@ export async function getStaticPaths() {
 		fallback: true,
 	};
 }
+
+export default Post;

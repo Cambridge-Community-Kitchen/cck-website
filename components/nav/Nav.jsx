@@ -104,22 +104,23 @@ const DesktopNav = () => {
 			{NAV_ITEMS.map((navItem) => (
 				<Flex key={navItem.label} mr={6}>
 					<Popover trigger={'hover'} placement={'bottom-start'}>
-						<PopoverTrigger>
-							<Link
-								p={2}
-								href={navItem.href ?? '#'}
-								fontSize="md"
-								fontWeight={500}
-								color={useColorModeValue('gray.600', 'gray.200')}
-								_hover={{
-									textDecoration: 'none',
-									color: useColorModeValue('gray.800', 'white'),
-								}}
-								isExternal={navItem.newWindow}
-							>
-								{navItem.label}
-							</Link>
-						</PopoverTrigger>
+						{/* <PopoverTrigger> */}
+						<Link
+							as={NextLink}
+							p={2}
+							href={navItem.href}
+							fontSize="md"
+							fontWeight={500}
+							color={useColorModeValue('gray.600', 'gray.200')}
+							_hover={{
+								textDecoration: 'none',
+								color: useColorModeValue('gray.800', 'white'),
+							}}
+							isExternal={navItem.newWindow}
+						>
+							{navItem.label}
+						</Link>
+						{/* </PopoverTrigger> */}
 
 						{navItem.children && (
 							<PopoverContent
