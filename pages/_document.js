@@ -13,11 +13,11 @@ class UpdatedDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
-					<script
+					{/* <script
 						async
 						defer
 						src="https://cabin.cckitchen.uk/hello.js"
-					></script>
+					></script> */}
 				</body>
 			</Html>
 		);
