@@ -8,30 +8,30 @@ import ReactMarkdown from 'react-markdown';
 import dayjs from 'dayjs';
 
 import LayoutContainer from '@components/layout-container';
-import styles from './post.module.scss';
+// import styles from './post.module.scss';
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
 const Post = ({ post }) => {
-	// const router = useRouter();
-	// if (router.isFallback) {
-	// 	return (
-	// 		<LayoutContainer>
-	// 			<h1>Please wait…</h1>
-	// 		</LayoutContainer>
-	// 	);
-	// }
+	const router = useRouter();
+	if (router.isFallback) {
+		return (
+			<LayoutContainer>
+				<h1>Please wait…</h1>
+			</LayoutContainer>
+		);
+	}
 
-	// if (!post.content) {
-	// 	return (
-	// 		<LayoutContainer>
-	// 			<Head>
-	// 				<meta name="robots" content="noindex" />
-	// 			</Head>
-	// 			<Error statusCode={404} />
-	// 		</LayoutContainer>
-	// 	);
-	// }
+	if (!post.content) {
+		return (
+			<LayoutContainer>
+				<Head>
+					<meta name="robots" content="noindex" />
+				</Head>
+				<Error statusCode={404} />
+			</LayoutContainer>
+		);
+	}
 
 	return (
 		<>
@@ -69,9 +69,7 @@ const Post = ({ post }) => {
 						</Box>
 						<Heading>{post.title}</Heading>
 						<time>{dayjs(post.date).format('MMM DD, YYYY')}</time>
-						<ReactMarkdown className={styles.content}>
-							{post.content.markdown}
-						</ReactMarkdown>
+						<ReactMarkdown>{post.content.markdown}</ReactMarkdown>
 					</Box>
 				</Flex>
 			</LayoutContainer>
@@ -105,6 +103,7 @@ export async function getStaticProps({ params }) {
 	return {
 		props: {
 			post,
+			revalidate: 10,
 		},
 	};
 }
@@ -119,6 +118,6 @@ export async function getStaticPaths() {
 
 	return {
 		paths: posts.map(({ slug }) => ({ params: { slug } })),
-		fallback: false,
+		fallback: true,
 	};
 }
