@@ -23,6 +23,7 @@ const Blog = ({ posts }) => {
 			<Head>
 				<meta
 					property="og:title"
+					name="og:title"
 					content="Blog | Cambridge Community Kitchen"
 				/>
 				<title>Blog | Cambridge Community Kitchen</title>
@@ -115,7 +116,8 @@ const Blog = ({ posts }) => {
 export async function getStaticProps() {
 	const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
-	const { posts } = await graphcms.request(`{
+	const { posts } = await graphcms.request(`
+	{
 		posts(orderBy: date_DESC) {
 			slug
 			title

@@ -44,13 +44,14 @@ const Post = ({ post }) => {
 						content="https://cckitchen.uk/preview.png"
 					/>
 				)}
-				{post.excerpt && (
-					<>
-						<meta property="og:description" content={post.excerpt} />
-						<meta name="description" content={post.excerpt} />
-					</>
-				)}
+
 				<meta
+					property="og:description"
+					name="og:description"
+					content={post.excerpt}
+				/>
+				<meta
+					name="og:title"
 					property="og:title"
 					content={`${post.title} | Cambridge Community Kitchen`}
 				/>
@@ -59,9 +60,9 @@ const Post = ({ post }) => {
 					content={`https://cckitchen.uk/blog/${post.slug}`}
 				/> */}
 				<meta property="og:type" content="article" />
-				<title>{`${post.title} | Cambridge Community Kitchen`}</title>
+				{/* <title>{`${post.title} | Cambridge Community Kitchen`}</title> */}
 			</Head>
-			<LayoutContainer>
+			<LayoutContainer title={`${post.title} | Cambridge Community Kitchen`}>
 				<Flex flexDirection="column" alignItems="center" py={6}>
 					<Box maxWidth={useBreakpointValue({ base: '90%', md: '650px' })}>
 						<Box h={'350px'} bg={'gray.100'} mt={-6} mb={6} pos={'relative'}>
