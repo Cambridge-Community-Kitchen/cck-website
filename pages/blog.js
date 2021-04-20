@@ -24,6 +24,7 @@ const Blog = ({ posts }) => {
 				<meta
 					property="og:title"
 					name="og:title"
+					key="ogtitle"
 					content="Blog | Cambridge Community Kitchen"
 				/>
 				<title>Blog | Cambridge Community Kitchen</title>
