@@ -2,17 +2,18 @@ import Head from 'next/head';
 import LayoutContainer from '@components/layout-container';
 import Hero from '@components/hero';
 
-export default function Home() {
+const Home = () => {
 	return (
 		<>
 			<Head>
 				<meta property="og:title" content="Cambridge Community Kitchen" />
 				<title>Cambridge Community Kitchen</title>
-				<meta property="og:type" content="article" />
 			</Head>
 			<LayoutContainer>
 				<Hero />
 			</LayoutContainer>
 		</>
 	);
-}
+};
+
+export default Home;
