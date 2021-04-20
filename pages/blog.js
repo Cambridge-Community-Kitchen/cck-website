@@ -18,16 +18,17 @@ import dayjs from 'dayjs';
 import LayoutContainer from '@components/layout-container';
 
 const Blog = ({ posts }) => {
+	if (!posts) return null;
+
 	return (
 		<>
 			<Head>
+				<title>Blog | Cambridge Community Kitchen</title>
 				<meta
 					property="og:title"
-					name="og:title"
 					key="ogtitle"
 					content="Blog | Cambridge Community Kitchen"
 				/>
-				<title>Blog | Cambridge Community Kitchen</title>
 				<meta property="og:type" content="website" />
 				{/* <meta property="og:url" content="https://cckitchen.uk/blog" /> */}
 			</Head>
