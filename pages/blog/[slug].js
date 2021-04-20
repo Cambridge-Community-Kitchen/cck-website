@@ -110,8 +110,8 @@ export async function getStaticProps({ params }) {
 		return {
 			props: {
 				post,
-				revalidate: 10,
 			},
+			revalidate: 5,
 		};
 	} catch (error) {
 		return { props: { post: { notFound: true } } };
