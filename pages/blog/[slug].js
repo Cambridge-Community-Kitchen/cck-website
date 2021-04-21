@@ -40,9 +40,8 @@ const Post = ({ post }) => {
 				title={`${post.title} | Cambridge Community Kitchen`}
 				description={post.excerpt}
 				openGraph={{
-					title: post.title,
+					title: `${post.title} | Cambridge Community Kitchen`,
 					description: post.excerpt,
-					type: 'article',
 					images: [{ url: post.coverImage.url }],
 					type: 'article',
 				}}

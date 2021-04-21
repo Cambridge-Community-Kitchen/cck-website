@@ -7,11 +7,12 @@ const Home = () => {
 		<>
 			<NextSeo
 				title="Cambridge Community Kitchen"
-				description="News and statements from Cambridge Community Kitchen"
+				description="We are a food solidarity collective tackling food poverty in Cambridge"
 				openGraph={{
 					title: 'Cambridge Community Kitchen',
 					description:
 						'We are a food solidarity collective tackling food poverty in Cambridge',
+					images: [{ url: 'https://cckitchen.uk/cck-preview.png' }],
 					url: 'https://cckitchen.uk',
 				}}
 			/>

@@ -28,6 +28,7 @@ const Blog = ({ posts }) => {
 				openGraph={{
 					title: 'Blog | Cambridge Community Kitchen',
 					description: 'News and statements from Cambridge Community Kitchen',
+					images: [{ url: 'https://cckitchen.uk/cck-preview.png' }],
 					url: 'https://cckitchen.uk/blog',
 					type: 'website',
 				}}
