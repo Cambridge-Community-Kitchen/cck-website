@@ -74,7 +74,7 @@ export default function WithSubnavigation() {
 				</Flex>
 
 				<Link
-					href="https://opencollective.com/cambridge-community-kitchen"
+					href="https://opencollective.com/cambridge-community-kitchen#category-CONTRIBUTE"
 					isExternal
 				>
 					<Button
@@ -102,24 +102,40 @@ const DesktopNav = () => {
 	return (
 		<Stack direction={'row'} spacing={4}>
 			{NAV_ITEMS.map((navItem) => (
-				<Flex key={navItem.label} mr={6}>
+				<Flex alignItems="center" key={navItem.label} mr={6}>
 					<Popover trigger={'hover'} placement={'bottom-start'}>
 						{/* <PopoverTrigger> */}
-						<Link
-							as={NextLink}
-							p={2}
-							href={navItem.href}
-							fontSize="md"
-							fontWeight={500}
-							color={useColorModeValue('gray.600', 'gray.200')}
-							_hover={{
-								textDecoration: 'none',
-								color: useColorModeValue('gray.800', 'white'),
-							}}
-							isExternal={navItem.newWindow}
-						>
-							{navItem.label}
-						</Link>
+						{navItem.newWindow ? (
+							<Link
+								p={2}
+								href={navItem.href}
+								fontSize="md"
+								// fontWeight={500}
+								color={useColorModeValue('gray.600', 'gray.200')}
+								_hover={{
+									textDecoration: 'none',
+									color: useColorModeValue('gray.800', 'white'),
+								}}
+								isExternal
+							>
+								{navItem.label}
+							</Link>
+						) : (
+							<Link
+								as={NextLink}
+								p={2}
+								href={navItem.href}
+								fontSize="md"
+								fontWeight={500}
+								color={useColorModeValue('gray.600', 'gray.200')}
+								_hover={{
+									textDecoration: 'none',
+									color: useColorModeValue('gray.800', 'white'),
+								}}
+							>
+								{navItem.label}
+							</Link>
+						)}
 						{/* </PopoverTrigger> */}
 
 						{navItem.children && (
