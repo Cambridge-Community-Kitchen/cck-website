@@ -39,8 +39,13 @@ function App({ Component, pageProps }) {
 					property="article:publisher"
 					content="https://www.facebook.com/cambridgecommunitykitchen"
 				/>
-				<meta property="og:url" content="" />
-				{/* <link rel="icon" href="/favicon.ico" /> */}
+				<link rel="icon" href="/favicon.ico" />
+				<meta property="og:locale" content="en_GB" />
+				<meta property="og:type" content="website" />
+				<meta
+					name="keywords"
+					content="Community kitchen, Cambridge, community, equality, food solidarity"
+				/>
 				{/* <meta name="theme-color" content="#2b8186" /> */}
 			</Head>
 			<ChakraProvider theme={theme}>

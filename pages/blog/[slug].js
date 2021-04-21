@@ -6,6 +6,7 @@ import { GraphQLClient } from 'graphql-request';
 import { Box, Heading, Flex, useBreakpointValue } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import dayjs from 'dayjs';
+import { NextSeo } from 'next-seo';
 
 import LayoutContainer from '@components/layout-container';
 import styles from './post.module.scss';
@@ -35,33 +36,17 @@ const Post = ({ post }) => {
 
 	return (
 		<>
-			<Head>
-				{post.coverImage.url ? (
-					<meta property="og:image" content={post.coverImage.url} />
-				) : (
-					<meta
-						property="og:image"
-						content="https://cckitchen.uk/preview.png"
-					/>
-				)}
-
-				<meta
-					property="og:description"
-					name="og:description"
-					content={post.excerpt}
-				/>
-				<meta
-					name="og:title"
-					property="og:title"
-					content={`${post.title} | Cambridge Community Kitchen`}
-				/>
-				{/* <meta
-					property="og:url"
-					content={`https://cckitchen.uk/blog/${post.slug}`}
-				/> */}
-				<meta property="og:type" content="article" />
-				{/* <title>{`${post.title} | Cambridge Community Kitchen`}</title> */}
-			</Head>
+			<NextSeo
+				title={`${post.title} | Cambridge Community Kitchen`}
+				description={post.excerpt}
+				openGraph={{
+					title: post.title,
+					description: post.excerpt,
+					type: 'article',
+					images: [{ url: post.coverImage.url }],
+					type: 'article',
+				}}
+			/>
 			<LayoutContainer title={`${post.title} | Cambridge Community Kitchen`}>
 				<Flex flexDirection="column" alignItems="center" py={6}>
 					<Box maxWidth={useBreakpointValue({ base: '90%', md: '650px' })}>

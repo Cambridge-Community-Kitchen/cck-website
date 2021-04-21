@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import NextLink from 'next/link';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { GraphQLClient } from 'graphql-request';
 import {
 	Box,
@@ -22,16 +22,16 @@ const Blog = ({ posts }) => {
 
 	return (
 		<>
-			<Head>
-				<title>Blog | Cambridge Community Kitchen</title>
-				<meta
-					property="og:title"
-					key="ogtitle"
-					content="Blog | Cambridge Community Kitchen"
-				/>
-				<meta property="og:type" content="website" />
-				{/* <meta property="og:url" content="https://cckitchen.uk/blog" /> */}
-			</Head>
+			<NextSeo
+				title="Blog | Cambridge Community Kitchen"
+				description="News and statements from Cambridge Community Kitchen"
+				openGraph={{
+					title: 'Blog | Cambridge Community Kitchen',
+					description: 'News and statements from Cambridge Community Kitchen',
+					url: 'https://cckitchen.uk/blog',
+					type: 'website',
+				}}
+			/>
 			<LayoutContainer>
 				<Flex justifyContent="center">
 					<Box
