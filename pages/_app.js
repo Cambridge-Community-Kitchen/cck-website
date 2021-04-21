@@ -13,14 +13,14 @@ const theme = extendTheme({
 	},
 });
 
-// function SafeHydrate({ children }) {
-// 	// This prevents the app from rendering on the server
-// 	return (
-// 		<div suppressHydrationWarning>
-// 			{typeof window === 'undefined' ? null : children}
-// 		</div>
-// 	);
-// }
+function SafeHydrate({ children }) {
+	// This prevents the app from rendering on the server
+	return (
+		<div suppressHydrationWarning>
+			{typeof window === 'undefined' ? null : children}
+		</div>
+	);
+}
 
 function App({ Component, pageProps }) {
 	return (
@@ -49,7 +49,9 @@ function App({ Component, pageProps }) {
 				{/* <meta name="theme-color" content="#2b8186" /> */}
 			</Head>
 			<ChakraProvider theme={theme}>
-				<Component {...pageProps} />
+				<SafeHydrate>
+					<Component {...pageProps} />
+				</SafeHydrate>
 			</ChakraProvider>
 		</>
 	);
