@@ -1,5 +1,6 @@
 import LayoutContainer from '@components/layout-container';
 import Hero from '@components/hero';
+import { NextSeo } from 'next-seo';
 
 const Home = () => {
 	return (
