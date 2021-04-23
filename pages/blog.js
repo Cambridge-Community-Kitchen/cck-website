@@ -18,8 +18,6 @@ import dayjs from 'dayjs';
 import LayoutContainer from '@components/layout-container';
 
 const Blog = ({ posts }) => {
-	if (!posts) return null;
-
 	return (
 		<>
 			<NextSeo

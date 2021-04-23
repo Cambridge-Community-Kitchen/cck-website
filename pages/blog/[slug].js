@@ -15,6 +15,9 @@ const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
 
 const Post = ({ post }) => {
 	const router = useRouter();
+
+	const boxBreakpointValue = useBreakpointValue({ base: '90%', md: '650px' });
+
 	if (router.isFallback) {
 		return (
 			<LayoutContainer>
@@ -46,9 +49,9 @@ const Post = ({ post }) => {
 					type: 'article',
 				}}
 			/>
-			<LayoutContainer title={`${post.title} | Cambridge Community Kitchen`}>
+			<LayoutContainer>
 				<Flex flexDirection="column" alignItems="center" py={6}>
-					<Box maxWidth={useBreakpointValue({ base: '90%', md: '650px' })}>
+					<Box maxWidth={boxBreakpointValue}>
 						<Box h={'350px'} bg={'gray.100'} mt={-6} mb={6} pos={'relative'}>
 							<Image
 								src={post.coverImage.url}
