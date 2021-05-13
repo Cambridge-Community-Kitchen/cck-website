@@ -34,7 +34,9 @@ const About = ({ page }) => {
 						maxWidth={useBreakpointValue({ base: '90%', md: '650px' })}
 						mb={8}
 					>
-						<Heading mb={8}>{page.title}</Heading>
+						<Heading as="h1" mb={8}>
+							{page.title}
+						</Heading>
 						<ReactMarkdown>{page.content.markdown}</ReactMarkdown>
 					</Box>
 				</Flex>
