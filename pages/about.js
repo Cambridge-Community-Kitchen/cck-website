@@ -2,17 +2,8 @@ import LayoutContainer from '@components/layout-container';
 import { NextSeo } from 'next-seo';
 import { GraphQLClient } from 'graphql-request';
 import ReactMarkdown from 'react-markdown';
-import {
-	Box,
-	Grid,
-	Heading,
-	Text,
-	Stack,
-	useBreakpointValue,
-	useColorModeValue,
-	Link,
-	Flex,
-} from '@chakra-ui/react';
+import { Box, Heading, useBreakpointValue, Flex } from '@chakra-ui/react';
+import styles from './blog/post.module.scss';
 
 const About = ({ page }) => {
 	return (
@@ -37,7 +28,9 @@ const About = ({ page }) => {
 						<Heading as="h1" mb={8}>
 							{page.title}
 						</Heading>
-						<ReactMarkdown>{page.content.markdown}</ReactMarkdown>
+						<ReactMarkdown className={styles.content}>
+							{page.content.markdown}
+						</ReactMarkdown>
 					</Box>
 				</Flex>
 			</LayoutContainer>

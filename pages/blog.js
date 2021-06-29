@@ -9,7 +9,6 @@ import {
 	Text,
 	Stack,
 	useBreakpointValue,
-	useColorModeValue,
 	Link,
 	Flex,
 } from '@chakra-ui/react';
@@ -56,12 +55,12 @@ const Blog = ({ posts }) => {
 											cursor="pointer"
 											maxW={'445px'}
 											w={'full'}
-											bg={useColorModeValue('white', 'gray.900')}
+											bg="white"
 											boxShadow="xl"
 											rounded={'md'}
 											p={6}
 											overflow={'hidden'}
-											transition="transform 300ms ease-in-out, box-shadow 300ms ease-in-out"
+											transition="box-shadow 300ms ease-in-out"
 											_hover={{ boxShadow: '2xl' }}
 										>
 											<Box
@@ -80,7 +79,7 @@ const Blog = ({ posts }) => {
 											</Box>
 											<Stack>
 												<Heading
-													color={useColorModeValue('gray.700', 'white')}
+													color="gray.700"
 													fontSize={'2xl'}
 													fontFamily={'body'}
 												>

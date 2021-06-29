@@ -1,4 +1,7 @@
 import NextLink from 'next/link';
+import classnames from 'classnames';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import {
 	Box,
 	Flex,
@@ -10,7 +13,6 @@ import {
 	Icon,
 	Link,
 	Popover,
-	PopoverTrigger,
 	PopoverContent,
 	useColorModeValue,
 	useDisclosure,
@@ -21,10 +23,11 @@ import {
 	ChevronDownIcon,
 	ChevronRightIcon,
 } from '@chakra-ui/icons';
-import Image from 'next/image';
+import styles from './Nav.module.scss';
 
 export default function WithSubnavigation() {
 	const { isOpen, onToggle } = useDisclosure();
+	const router = useRouter();
 
 	return (
 		<Box>
@@ -68,7 +71,7 @@ export default function WithSubnavigation() {
 						</Link>
 
 						<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-							<DesktopNav />
+							<DesktopNav currentPathname={router.pathname} />
 						</Flex>
 					</Flex>
 				</Flex>
@@ -98,42 +101,35 @@ export default function WithSubnavigation() {
 	);
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({ currentPathname }) => {
 	return (
 		<Stack direction={'row'} spacing={4}>
 			{NAV_ITEMS.map((navItem) => (
-				<Flex alignItems="center" key={navItem.label} mr={6}>
+				<Flex alignItems="center" key={navItem.label}>
 					<Popover trigger={'hover'} placement={'bottom-start'}>
 						{/* <PopoverTrigger> */}
 						{navItem.newWindow ? (
-							<Link
-								p={2}
-								href={navItem.href}
-								fontSize="md"
-								// fontWeight={500}
-								color={useColorModeValue('gray.600', 'gray.200')}
-								_hover={{
-									textDecoration: 'none',
-									color: useColorModeValue('gray.800', 'white'),
-								}}
-								isExternal
-							>
-								{navItem.label}
+							<Link as={NextLink} href={navItem.href} passHref>
+								<a
+									className={classnames(
+										styles.navLink,
+										currentPathname === navItem.href && styles.active,
+									)}
+									target="_blank"
+								>
+									{navItem.label}
+								</a>
 							</Link>
 						) : (
-							<Link
-								as={NextLink}
-								p={2}
-								href={navItem.href}
-								fontSize="md"
-								fontWeight={500}
-								color={useColorModeValue('gray.600', 'gray.200')}
-								_hover={{
-									textDecoration: 'none',
-									color: useColorModeValue('gray.800', 'white'),
-								}}
-							>
-								{navItem.label}
+							<Link as={NextLink} href={navItem.href}>
+								<a
+									className={classnames(
+										styles.navLink,
+										currentPathname === navItem.href && styles.active,
+									)}
+								>
+									{navItem.label}
+								</a>
 							</Link>
 						)}
 						{/* </PopoverTrigger> */}
@@ -142,7 +138,7 @@ const DesktopNav = () => {
 							<PopoverContent
 								border={0}
 								boxShadow={'xl'}
-								bg={useColorModeValue('white', 'gray.800')}
+								bg={'white'}
 								p={4}
 								rounded={'xl'}
 								minW={'sm'}
@@ -270,6 +266,10 @@ const NAV_ITEMS = [
 	{
 		label: 'About',
 		href: '/about',
+	},
+	{
+		label: 'Events',
+		href: '/events',
 	},
 	{
 		label: 'Blog',
