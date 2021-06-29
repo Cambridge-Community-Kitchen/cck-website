@@ -267,10 +267,10 @@ const NAV_ITEMS = [
 		label: 'About',
 		href: '/about',
 	},
-	{
-		label: 'Events',
-		href: '/events',
-	},
+	// {
+	// 	label: 'Events',
+	// 	href: '/events',
+	// },
 	{
 		label: 'Blog',
 		href: '/blog',
