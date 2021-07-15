@@ -13,33 +13,26 @@ import {
 	Icon,
 	Link,
 	Popover,
-	PopoverContent,
-	useColorModeValue,
 	useDisclosure,
 } from '@chakra-ui/react';
-import {
-	HamburgerIcon,
-	CloseIcon,
-	ChevronDownIcon,
-	ChevronRightIcon,
-} from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import styles from './Nav.module.scss';
 
-export default function WithSubnavigation() {
+export default function Nav() {
 	const { isOpen, onToggle } = useDisclosure();
 	const router = useRouter();
 
 	return (
 		<Box>
 			<Flex
-				bg={useColorModeValue('white', 'gray.800')}
-				color={useColorModeValue('gray.600', 'white')}
+				bg={'white'}
+				color={'gray.600'}
 				minH={'60px'}
 				py={{ base: 2 }}
 				px={{ base: 4 }}
 				borderBottom={1}
 				borderStyle={'solid'}
-				borderColor={useColorModeValue('gray.200', 'gray.900')}
+				borderColor={'gray.200'}
 				align="center"
 				justifyContent="space-between"
 			>
@@ -107,7 +100,6 @@ const DesktopNav = ({ currentPathname }) => {
 			{NAV_ITEMS.map((navItem) => (
 				<Flex alignItems="center" key={navItem.label}>
 					<Popover trigger={'hover'} placement={'bottom-start'}>
-						{/* <PopoverTrigger> */}
 						{navItem.newWindow ? (
 							<Link as={NextLink} href={navItem.href} passHref>
 								<a
@@ -132,24 +124,6 @@ const DesktopNav = ({ currentPathname }) => {
 								</a>
 							</Link>
 						)}
-						{/* </PopoverTrigger> */}
-
-						{navItem.children && (
-							<PopoverContent
-								border={0}
-								boxShadow={'xl'}
-								bg={'white'}
-								p={4}
-								rounded={'xl'}
-								minW={'sm'}
-							>
-								<Stack>
-									{navItem.children.map((child) => (
-										<DesktopSubNav key={child.label} {...child} />
-									))}
-								</Stack>
-							</PopoverContent>
-						)}
 					</Popover>
 				</Flex>
 			))}
@@ -157,51 +131,9 @@ const DesktopNav = ({ currentPathname }) => {
 	);
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
-	return (
-		<Link
-			as={NextLink}
-			href={href}
-			role={'group'}
-			display={'block'}
-			p={2}
-			rounded={'md'}
-			_hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
-		>
-			<Stack direction={'row'} align={'center'}>
-				<Box>
-					<Text
-						transition={'all .3s ease'}
-						_groupHover={{ color: 'pink.400' }}
-						fontWeight={500}
-					>
-						{label}
-					</Text>
-					<Text fontSize={'sm'}>{subLabel}</Text>
-				</Box>
-				<Flex
-					transition={'all .3s ease'}
-					transform={'translateX(-10px)'}
-					opacity={0}
-					_groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-					justify={'flex-end'}
-					align={'center'}
-					flex={1}
-				>
-					<Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-				</Flex>
-			</Stack>
-		</Link>
-	);
-};
-
 const MobileNav = () => {
 	return (
-		<Stack
-			bg={useColorModeValue('white', 'gray.800')}
-			p={4}
-			display={{ md: 'none' }}
-		>
+		<Stack bg={'white'} p={4} display={{ md: 'none' }}>
 			{NAV_ITEMS.map((navItem) => (
 				<MobileNavItem key={navItem.label} {...navItem} />
 			))}
@@ -224,10 +156,7 @@ const MobileNavItem = ({ label, children, href }) => {
 					textDecoration: 'none',
 				}}
 			>
-				<Text
-					fontWeight={600}
-					color={useColorModeValue('gray.600', 'gray.200')}
-				>
+				<Text fontWeight={600} color={'gray.600'}>
 					{label}
 				</Text>
 				{children && (
@@ -247,7 +176,7 @@ const MobileNavItem = ({ label, children, href }) => {
 					pl={4}
 					borderLeft={1}
 					borderStyle={'solid'}
-					borderColor={useColorModeValue('gray.200', 'gray.700')}
+					borderColor={'gray.200'}
 					align={'start'}
 				>
 					{children &&
@@ -267,33 +196,17 @@ const NAV_ITEMS = [
 		label: 'About',
 		href: '/about',
 	},
-	// {
-	// 	label: 'Events',
-	// 	href: '/events',
-	// },
+	{
+		label: 'Events',
+		href: '/events',
+	},
 	{
 		label: 'Blog',
 		href: '/blog',
-		// children: [
-		// 	{
-		// 		label: 'Explore Design Work',
-		// 		subLabel: 'Trending Design to inspire you',
-		// 		href: '#',
-		// 	},
-		// 	{
-		// 		label: 'New & Noteworthy',
-		// 		subLabel: 'Up-and-coming Designers',
-		// 		href: '#',
-		// 	},
-		// ],
 	},
 	{
 		label: 'Volunteer Info',
 		href: 'https://bit.ly/CCKwelcomepack',
 		newWindow: true,
 	},
-	// {
-	// 	label: 'More Info',
-	// 	href: '/info',
-	// },
 ];

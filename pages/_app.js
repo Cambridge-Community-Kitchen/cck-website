@@ -3,6 +3,28 @@ import Head from 'next/head';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+	styles: {
+		global: () => ({
+			h2: {
+				fontSize: 28,
+				fontWeight: 700,
+			},
+			h3: {
+				fontSize: 24,
+			},
+			h4: {
+				fontSize: 22,
+			},
+			h5: {
+				fontSize: 20,
+				fontWeight: 700,
+			},
+			h6: {
+				fontSize: 18,
+				fontWeight: 700,
+			},
+		}),
+	},
 	colors: {
 		orange: {
 			light: '#fedead',
@@ -12,6 +34,16 @@ const theme = extendTheme({
 		},
 	},
 });
+
+function SafeHydrate({ children }) {
+	// This prevents the app from rendering on the server
+	// done because of some layout bugs caused by server rendering
+	return (
+		<div suppressHydrationWarning>
+			{typeof window === 'undefined' ? null : children}
+		</div>
+	);
+}
 
 function App({ Component, pageProps }) {
 	return (
@@ -39,9 +71,11 @@ function App({ Component, pageProps }) {
 				/>
 				{/* <meta name="theme-color" content="#2b8186" /> */}
 			</Head>
-			<ChakraProvider theme={theme}>
-				<Component {...pageProps} />
-			</ChakraProvider>
+			<SafeHydrate>
+				<ChakraProvider theme={theme}>
+					<Component {...pageProps} />
+				</ChakraProvider>
+			</SafeHydrate>
 		</>
 	);
 }
