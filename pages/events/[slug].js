@@ -5,10 +5,12 @@ import Error from 'next/error';
 import { GraphQLClient } from 'graphql-request';
 import {
 	Box,
+	Button,
 	Heading,
 	Flex,
 	Text,
 	Icon,
+	Link,
 	useBreakpointValue,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
@@ -65,22 +67,39 @@ const Event = ({ event }) => {
 						</Box>
 						<Heading>{event.title}</Heading>
 						<time>{dayjs(event.date).format('MMM DD, YYYY, HH:mm')}</time>
-						<Text
-							fontSize="lg"
-							color="gray.600"
-							display="flex"
-							fontWeight="700"
-							alignItems="center"
-							mt={2}
-						>
-							<Icon
-								as={HiOutlineLocationMarker}
-								color="green.500"
-								mr={1}
+						<Box display="flex" justifyContent="space-between">
+							<Text
 								fontSize="lg"
-							/>
-							{event.location}
-						</Text>
+								color="gray.600"
+								display="flex"
+								fontWeight="700"
+								alignItems="center"
+								mt={2}
+							>
+								<Icon
+									as={HiOutlineLocationMarker}
+									color="green.500"
+									mr={1}
+									fontSize="lg"
+								/>
+								{event.location}
+							</Text>
+							{event.link && (
+								<Link href={event.link} isExternal>
+									<Button
+										fontSize={'sm'}
+										fontWeight={600}
+										color={'white'}
+										bg={'green.400'}
+										_hover={{
+											bg: 'green.300',
+										}}
+									>
+										Register
+									</Button>
+								</Link>
+							)}
+						</Box>
 						<ReactMarkdown className={styles.content}>
 							{event.description.markdown}
 						</ReactMarkdown>
@@ -101,6 +120,7 @@ export async function getStaticProps({ params }) {
 					date
 					slug
 					location
+					link
 					description {
 						markdown
 						text
