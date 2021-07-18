@@ -18,7 +18,6 @@ import dayjs from 'dayjs';
 
 const Card = ({ event }) => {
 	const [isDesktop] = useMediaQuery('(min-width: 760px)');
-	// console.log(event);
 
 	return (
 		<Link as={NextLink} href={`events/${event.slug}`} key={event.slug}>
@@ -66,7 +65,7 @@ const Card = ({ event }) => {
 							mb={4}
 						>
 							<Text as="time" fontSize="sm" color="gray.600">
-								{dayjs(event.date).format('MMM DD, YYYY HH:MM')}
+								{dayjs(event.date).format('MMM DD, YYYY HH:mm')}
 							</Text>
 							<Text
 								fontSize="sm"
