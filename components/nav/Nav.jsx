@@ -53,14 +53,12 @@ export default function Nav() {
 					</Flex>
 					<Flex alignItems="center" justify={{ base: 'center', md: 'start' }}>
 						<Link as={NextLink} href="/">
-							<a>
-								<Image
-									alt="Cambridge Community Kitchen logo"
-									src="/cck-simple.png"
-									width="36"
-									height="30"
-								/>
-							</a>
+							<Image
+								alt="Cambridge Community Kitchen logo"
+								src="/cck-simple.png"
+								width="36"
+								height="30"
+							/>
 						</Link>
 
 						<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -101,27 +99,29 @@ const DesktopNav = ({ currentPathname }) => {
 				<Flex alignItems="center" key={navItem.label}>
 					<Popover trigger={'hover'} placement={'bottom-start'}>
 						{navItem.newWindow ? (
-							<Link as={NextLink} href={navItem.href} passHref>
-								<a
-									className={classnames(
-										styles.navLink,
-										currentPathname === navItem.href && styles.active,
-									)}
-									target="_blank"
+							<Link
+								as={NextLink}
+								href={navItem.href}
+								passHref
+								className={classnames(
+									styles.navLink,
+									currentPathname === navItem.href && styles.active,
+								)}
+								target="_blank"
 								>
 									{navItem.label}
-								</a>
+
 							</Link>
 						) : (
-							<Link as={NextLink} href={navItem.href}>
-								<a
-									className={classnames(
-										styles.navLink,
-										currentPathname === navItem.href && styles.active,
-									)}
-								>
-									{navItem.label}
-								</a>
+							<Link
+								as={NextLink}
+								href={navItem.href}
+								className={classnames(
+									styles.navLink,
+									currentPathname === navItem.href && styles.active,
+								)}
+							>
+								{navItem.label}
 							</Link>
 						)}
 					</Popover>
