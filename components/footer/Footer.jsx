@@ -43,7 +43,7 @@ const Footer = () => {
 					</SocialButton>
 					<SocialButton
 						label="Text us"
-						href="sms://+447915784334"
+						href="sms://+447908661681"
 					>
 						<FaSms />
 					</SocialButton>

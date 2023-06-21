@@ -79,7 +79,7 @@ const Hero = () => {
 								Email us
 							</Button>
 						</Link>
-						<Link href="sms://+447915784334" isExternal>
+						<Link href="sms://+447908661681" isExternal>
 							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
 								Text us: 07915 784334
 							</Button>
