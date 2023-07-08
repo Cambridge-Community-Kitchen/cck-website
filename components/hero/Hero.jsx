@@ -50,7 +50,7 @@ const Hero = () => {
 					<Text color={'gray.500'}>
 						We are a food solidarity collective tackling food poverty in
 						Cambridge by offering free, hot, plant-based meals to those who need
-						them every Tuesday, Thursday and Sunday.
+						them every Thursday and Sunday.
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
