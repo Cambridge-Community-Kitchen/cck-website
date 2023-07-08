@@ -10,7 +10,13 @@ import {
 	useColorModeValue,
 	VisuallyHidden,
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
+import {
+	FaEnvelope,
+	FaFacebook,
+	FaInstagram,
+	FaSms,
+	FaTwitter,
+} from 'react-icons/fa';
 
 const Footer = () => {
 	return (
@@ -29,6 +35,18 @@ const Footer = () => {
 			>
 				<Logo />
 				<Stack direction="row" spacing={6}>
+					<SocialButton
+						label="Email us"
+						href="mailto:cambscommunitykitchen@gmail.com"
+					>
+						<FaEnvelope />
+					</SocialButton>
+					<SocialButton
+						label="Text us"
+						href="sms://+447908661681"
+					>
+						<FaSms />
+					</SocialButton>
 					<SocialButton
 						label="Instagram"
 						href="https://www.instagram.com/cambridgecommunitykitchen/"

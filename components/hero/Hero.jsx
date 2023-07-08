@@ -74,6 +74,16 @@ const Hero = () => {
 								Request meals
 							</Button>
 						</Link>
+						<Link href="mailto:cambscommunitykitchen@gmail.com" isExternal>
+							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+								Email us
+							</Button>
+						</Link>
+						<Link href="sms://+447908661681" isExternal>
+							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+								Text us: 07915 784334
+							</Button>
+						</Link>
 					</Stack>
 				</Stack>
 				<Flex

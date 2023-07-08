@@ -2,7 +2,25 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Ensure you have a recent copy of node and npm/yarn then run:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Environment variables
+
+If you have access to the CMS at https://app.hygraph.com, visit the CCK project, and under 'Settings', retrieve the read-only content API URL, and set it (perhaps in a file like `.bashrc`):
+
+```
+GRAPHCMS_URL=https://eu-central-1.cdn.hygraph.com/content/.../master
+```
+
+### Running the server locally
+
+Once your environment is set up, run the development server as follows:
 
 ```bash
 npm run dev
@@ -29,6 +47,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The website is deployed on the [Vercel Platform](https://vercel.com/). The [Next.js deployment documentation](https://nextjs.org/docs/deployment) has more guidance onhow this works in general.
