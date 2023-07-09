@@ -11,12 +11,14 @@
 		"plugin:import/errors",
 		"plugin:import/warnings",
 		"plugin:react/recommended",
-		"plugin:react-hooks/recommended"
+		"plugin:react-hooks/recommended",
+		"plugin:@next/next/recommended"
 	],
-	"parser": "babel-eslint",
 	"parserOptions": {
-		"sourceType": "module",
-		"ecmaVersion": 2020
+		"ecmaVersion": 2022,
+		"parser": "@babel/eslint-parser",
+		"requireConfigFile": false,
+		"sourceType": "module"
 	},
 	"settings": {
 		"import/resolver": {

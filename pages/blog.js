@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import NextLink from 'next/link';
 import { NextSeo } from 'next-seo';
 import { GraphQLClient } from 'graphql-request';
