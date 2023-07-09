@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import NextLink from 'next/link';
 import {
 	Box,
