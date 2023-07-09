@@ -81,7 +81,7 @@ const Hero = () => {
 						</Link>
 						<Link href="sms://+447908661681" isExternal>
 							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
-								Text us: 07915 784334
+								Text us: 07908 661681
 							</Button>
 						</Link>
 					</Stack>
