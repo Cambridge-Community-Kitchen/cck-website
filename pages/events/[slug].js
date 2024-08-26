@@ -55,7 +55,7 @@ const Event = ({ event }) => {
 				openGraph={{
 					title: `${event.title} | Cambridge Community Kitchen`,
 					description: event.description.text.slice(0, 50),
-					images: [{ url: event.image.url }],
+					images: [{ url: event.image?.url }],
 					type: 'article',
 				}}
 			/>
@@ -63,7 +63,7 @@ const Event = ({ event }) => {
 				<Flex flexDirection="column" alignItems="center" py={6}>
 					<Box maxWidth={boxBreakpointValue}>
 						<Box h={'380px'} bg={'gray.100'} mt={-6} mb={6} pos={'relative'}>
-							<Image src={event.image.url} layout="fill" objectFit="cover" />
+							<Image src={event.image?.url} layout="fill" objectFit="cover" />
 						</Box>
 						<Heading>{event.title}</Heading>
 						<time>{dayjs(event.date).format('MMM DD, YYYY, HH:mm')}</time>

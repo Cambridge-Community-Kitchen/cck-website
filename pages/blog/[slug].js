@@ -45,7 +45,7 @@ const Post = ({ post }) => {
 				openGraph={{
 					title: `${post.title} | Cambridge Community Kitchen`,
 					description: post.excerpt,
-					images: [{ url: post.coverImage.url }],
+					images: [{ url: post.coverImage?.url }],
 					type: 'article',
 				}}
 			/>
@@ -54,7 +54,7 @@ const Post = ({ post }) => {
 					<Box maxWidth={boxBreakpointValue}>
 						<Box h={'350px'} bg={'gray.100'} mt={-6} mb={6} pos={'relative'}>
 							<Image
-								src={post.coverImage.url}
+								src={post.coverImage?.url}
 								layout="fill"
 								objectFit="cover"
 							/>
