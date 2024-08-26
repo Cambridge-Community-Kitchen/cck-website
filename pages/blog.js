@@ -72,7 +72,7 @@ const Blog = ({ posts }) => {
 												pos={'relative'}
 											>
 												<Image
-													src={post.coverImage.url}
+													src={post.coverImage?.url}
 													layout="fill"
 													objectFit="cover"
 												/>

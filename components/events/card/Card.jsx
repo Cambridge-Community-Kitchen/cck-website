@@ -40,14 +40,14 @@ const Card = ({ event }) => {
 					>
 						{isDesktop ? (
 							<Image
-								src={event.image.url}
+								src={event.image?.url}
 								width="200px"
 								height="200px"
 								objectFit="cover"
 								layout="fixed"
 							/>
 						) : (
-							<Image src={event.image.url} objectFit="cover" layout="fill" />
+							<Image src={event.image?.url} objectFit="cover" layout="fill" />
 						)}
 					</Box>
 					<Spacer />
