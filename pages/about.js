@@ -1,9 +1,10 @@
 import LayoutContainer from '@components/layout-container';
 import { NextSeo } from 'next-seo';
 import { GraphQLClient } from 'graphql-request';
-import ReactMarkdown from 'react-markdown';
 import { Box, Heading, useBreakpointValue, Flex } from '@chakra-ui/react';
 import styles from './blog/post.module.scss';
+
+const { OPENCOLLECTIVE_API_TOKEN } = process.env;
 
 const About = ({ page }) => {
 	return (
@@ -26,11 +27,13 @@ const About = ({ page }) => {
 						mb={8}
 					>
 						<Heading as="h1" mb={8}>
-							{page.title}
+							About Cambridge Community Kitchen
 						</Heading>
-						<ReactMarkdown className={styles.content}>
-							{page.content.markdown}
-						</ReactMarkdown>
+						<div
+							className={styles.content}
+							/* TODO: sanitise HTML */
+							dangerouslySetInnerHTML={{'__html' : page}}
+						/>
 					</Box>
 				</Flex>
 			</LayoutContainer>
@@ -39,24 +42,28 @@ const About = ({ page }) => {
 };
 
 export async function getStaticProps() {
-	const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
-
-	const { page } = await graphcms.request(`
-	{
-		page(where: {slug: "about"}) {
-			content {
-				markdown
+	const client = new GraphQLClient(
+		'https://api.opencollective.com/graphql/v2',
+		{
+			headers: {
+				authorization: `Bearer ${OPENCOLLECTIVE_API_TOKEN}`
 			}
-			title
 		}
-	}
+	);
+
+	const response = await client.request(`
+		{
+			collective(slug: "cambridge-community-kitchen") {
+				longDescription
+			}
+		}
 	`);
 
 	return {
 		props: {
-			page,
+			page: response?.collective?.longDescription,
 		},
-		revalidate: 10,
+		revalidate: 10800, // cache for 3 hours
 	};
 }
 

@@ -16,15 +16,17 @@ import dayjs from 'dayjs';
 
 import LayoutContainer from '@components/layout-container';
 
+const { OPENCOLLECTIVE_API_TOKEN } = process.env;
+
 const Blog = ({ posts }) => {
 	return (
 		<>
 			<NextSeo
-				title="Blog | Cambridge Community Kitchen"
-				description="News and statements from Cambridge Community Kitchen"
+				title="News | Cambridge Community Kitchen"
+				description="Updates from Cambridge Community Kitchen"
 				openGraph={{
-					title: 'Blog | Cambridge Community Kitchen',
-					description: 'News and statements from Cambridge Community Kitchen',
+					title: 'News | Cambridge Community Kitchen',
+					description: 'Updates from Cambridge Community Kitchen',
 					images: [{ url: 'https://cckitchen.uk/cck-preview.png' }],
 					url: 'https://cckitchen.uk/blog',
 					type: 'website',
@@ -36,7 +38,7 @@ const Blog = ({ posts }) => {
 						maxWidth={useBreakpointValue({ base: '90%', md: '850px' })}
 						mb={8}
 					>
-						<Heading mb={8}>CCK Blog</Heading>
+						<Heading mb={8}>News & Updates</Heading>
 						<Grid
 							templateColumns={useBreakpointValue({
 								base: 'repeat(1, 1fr)',
@@ -72,7 +74,7 @@ const Blog = ({ posts }) => {
 												pos={'relative'}
 											>
 												<Image
-													src={post.coverImage?.url}
+													src={post.coverImage?.url ?? '/cck-logo-round.png' }
 													layout="fill"
 													objectFit="cover"
 												/>
@@ -97,7 +99,7 @@ const Blog = ({ posts }) => {
 											>
 												<Stack direction={'column'} spacing={0} fontSize={'sm'}>
 													<Text as="time" color={'gray.500'}>
-														{dayjs(post.date).format('MMM DD, YYYY')}
+														{dayjs(post.publishedAt).format('DD MMMM YYYY')}
 													</Text>
 												</Stack>
 											</Stack>
@@ -114,26 +116,37 @@ const Blog = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-	const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
-
-	const { posts } = await graphcms.request(`
-	{
-		posts(orderBy: date_DESC) {
-			slug
-			title
-			date
-			excerpt
-			coverImage {
-				url
+	const client = new GraphQLClient(
+		'https://api.opencollective.com/graphql/v2',
+		{
+			headers: {
+				authorization: `Bearer ${OPENCOLLECTIVE_API_TOKEN}`
 			}
 		}
-	}`);
+	);
+
+	const response = await client.request(`
+		{
+			collective(slug: "cambridge-community-kitchen") {
+				updates {
+					nodes {
+						id
+						slug
+						summary
+						title
+						html
+						publishedAt
+					}
+				}
+			}
+		}
+	`);
 
 	return {
 		props: {
-			posts,
+			posts: response?.collective?.updates?.nodes ?? [],
 		},
-		revalidate: 10,
+		revalidate: 1200, // cache for 20 minutes
 	};
 }
 
