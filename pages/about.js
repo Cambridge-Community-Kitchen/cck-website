@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo';
 import { GraphQLClient } from 'graphql-request';
 import { Box, Heading, useBreakpointValue, Flex } from '@chakra-ui/react';
 import styles from './blog/post.module.scss';
+import { SanitizedHtml } from '@components/html/SanitizedHtml';
 
 const { OPENCOLLECTIVE_API_TOKEN } = process.env;
 
@@ -29,11 +30,7 @@ const About = ({ page }) => {
 						<Heading as="h1" mb={8}>
 							About Cambridge Community Kitchen
 						</Heading>
-						<div
-							className={styles.content}
-							/* TODO: sanitise HTML */
-							dangerouslySetInnerHTML={{'__html' : page}}
-						/>
+						<SanitizedHtml html={page} />
 					</Box>
 				</Flex>
 			</LayoutContainer>

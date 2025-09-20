@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import Error from 'next/error';
 import { GraphQLClient } from 'graphql-request';
 import { Box, Heading, Flex, useBreakpointValue } from '@chakra-ui/react';
-import ReactMarkdown from 'react-markdown';
 import dayjs from 'dayjs';
 import { NextSeo } from 'next-seo';
 
 import LayoutContainer from '@components/layout-container';
 import styles from './post.module.scss';
+import { SanitizedHtml } from '@components/html/SanitizedHtml';
 
 const { OPENCOLLECTIVE_API_TOKEN } = process.env;
 
@@ -70,11 +70,7 @@ const Post = ({ post }) => {
 						</Box>
 						<Heading>{post.title}</Heading>
 						<time>{dayjs(post.date).format('DD MMMM YYYY')}</time>
-						<div
-							className={styles.content}
-							/* TODO: sanitise HTML */
-							dangerouslySetInnerHTML={{'__html' : post.html}}
-						/>
+						<SanitizedHtml html={post.html} />
 					</Box>
 				</Flex>
 			</LayoutContainer>
