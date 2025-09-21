@@ -197,7 +197,7 @@ const NAV_ITEMS = [
 		href: '/about',
 	},
 	{
-		label: 'Blog',
+		label: 'News',
 		href: '/blog',
 	},
 	{
