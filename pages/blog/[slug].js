@@ -94,7 +94,8 @@ export async function getStaticPaths() {
 		paths: posts.map(
 			({ slug }) => `/blog/${slug}`
 		),
-		revalidate: 1200, // cache for 20 minutes
+		// cannot specify revalidate on getStaticPaths
+		fallback: 'blocking',
 	};
 }
 
