@@ -55,8 +55,9 @@ const Hero = () => {
 						<Link
 							href="/about"
 							fontWeight="bold"
-							textDecoration={"underline"}
-							color={"orange.dark"}
+							textDecoration="underline"
+							color="orange.dark"
+							_hover={{ color: 'orange.darkHover' }}
 						>Find out more about what we do</Link>.
 					</Text>
 					<Stack
