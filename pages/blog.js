@@ -1,7 +1,6 @@
 import Image from 'next/legacy/image';
 import NextLink from 'next/link';
 import { NextSeo } from 'next-seo';
-import { GraphQLClient } from 'graphql-request';
 import {
 	Box,
 	Grid,
@@ -15,8 +14,7 @@ import {
 import dayjs from 'dayjs';
 
 import LayoutContainer from '@components/layout-container';
-
-const { OPENCOLLECTIVE_API_TOKEN } = process.env;
+import { getAllPosts } from '@services/opencollective';
 
 const Blog = ({ posts }) => {
 	return (
@@ -116,35 +114,9 @@ const Blog = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-	const client = new GraphQLClient(
-		'https://api.opencollective.com/graphql/v2',
-		{
-			headers: {
-				authorization: `Bearer ${OPENCOLLECTIVE_API_TOKEN}`
-			}
-		}
-	);
-
-	const response = await client.request(`
-		{
-			collective(slug: "cambridge-community-kitchen") {
-				updates {
-					nodes {
-						id
-						slug
-						summary
-						title
-						html
-						publishedAt
-					}
-				}
-			}
-		}
-	`);
-
 	return {
 		props: {
-			posts: response?.collective?.updates?.nodes ?? [],
+			posts: await getAllPosts(),
 		},
 		revalidate: 1200, // cache for 20 minutes
 	};

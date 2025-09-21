@@ -1,11 +1,8 @@
 import LayoutContainer from '@components/layout-container';
 import { NextSeo } from 'next-seo';
-import { GraphQLClient } from 'graphql-request';
 import { Box, Heading, useBreakpointValue, Flex } from '@chakra-ui/react';
-import styles from './blog/post.module.scss';
 import { SanitizedHtml } from '@components/html/SanitizedHtml';
-
-const { OPENCOLLECTIVE_API_TOKEN } = process.env;
+import { getCollectiveDescription } from '@services/opencollective';
 
 const About = ({ page }) => {
 	return (
@@ -39,26 +36,9 @@ const About = ({ page }) => {
 };
 
 export async function getStaticProps() {
-	const client = new GraphQLClient(
-		'https://api.opencollective.com/graphql/v2',
-		{
-			headers: {
-				authorization: `Bearer ${OPENCOLLECTIVE_API_TOKEN}`
-			}
-		}
-	);
-
-	const response = await client.request(`
-		{
-			collective(slug: "cambridge-community-kitchen") {
-				longDescription
-			}
-		}
-	`);
-
 	return {
 		props: {
-			page: response?.collective?.longDescription,
+			page: await getCollectiveDescription()
 		},
 		revalidate: 10800, // cache for 3 hours
 	};
