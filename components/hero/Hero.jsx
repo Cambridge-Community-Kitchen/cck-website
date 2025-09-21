@@ -49,8 +49,15 @@ const Hero = () => {
 					</Heading>
 					<Text color={'gray.500'}>
 						We are a food solidarity collective tackling food poverty in
-						Cambridge by offering free, hot, plant-based meals to those who need
-						them every Tuesday, Thursday and Sunday.
+						Cambridge since 2020 by offering free, hot, plant-based meals
+						to those who need them every Tuesday, Thursday and Sunday.
+						<br />
+						<Link
+							href="/about"
+							fontWeight="bold"
+							textDecoration={"underline"}
+							color={"orange.dark"}
+						>Find out more about what we do</Link>.
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
