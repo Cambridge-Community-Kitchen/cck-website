@@ -14,7 +14,7 @@ import {
 	FaFacebook,
 	FaInstagram,
 	FaSms,
-	FaTwitter,
+	FaMastodon,
 } from 'react-icons/fa';
 
 const Footer = () => {
@@ -52,8 +52,8 @@ const Footer = () => {
 					>
 						<FaInstagram />
 					</SocialButton>
-					<SocialButton label="Twitter" href="https://twitter.com/camcommunity">
-						<FaTwitter />
+					<SocialButton label="Mastodon" href="https://mastodon.social/@cckitchen">
+						<FaMastodon />
 					</SocialButton>
 					<SocialButton
 						label="Facebook"
@@ -100,6 +100,7 @@ const SocialButton = ({ children, label, href }) => {
 			justifyContent="center"
 			transition={'background 0.3s ease'}
 			target="_blank"
+			rel="me"
 			_hover={{
 				bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
 			}}
