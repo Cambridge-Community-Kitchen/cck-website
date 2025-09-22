@@ -12,11 +12,6 @@ export default class MyDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
-					<script
-						async
-						defer
-						src="https://cabin.cckitchen.uk/hello.js"
-					></script>
 				</body>
 			</Html>
 		);
