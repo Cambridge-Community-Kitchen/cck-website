@@ -51,6 +51,7 @@ function App({ Component, pageProps }) {
 					content="https://www.facebook.com/cambridgecommunitykitchen"
 				/>
 				<link rel="icon" href="/favicon.ico" />
+				<link rel="me" href="https://mastodon.social/@cckitchen" />
 				<meta property="og:locale" content="en_GB" />
 				<meta property="og:type" content="website" />
 				<meta
