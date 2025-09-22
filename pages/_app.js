@@ -46,8 +46,6 @@ function App({ Component, pageProps }) {
 				/>
 				<meta property="og:site_name" content="Cambridge Community Kitchen" />
 				<meta property="fb:pages" content="113945517195261" />
-				<meta name="twitter:url" content="https://cckitchen.uk" />
-				<meta name="twitter:site" content="@camcommunity" />
 				<meta
 					property="article:publisher"
 					content="https://www.facebook.com/cambridgecommunitykitchen"
