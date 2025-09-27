@@ -14,6 +14,14 @@ import {
 } from '@chakra-ui/react';
 
 const Hero = () => {
+
+	const linkStyle = {
+		fontWeight: 'bold',
+		textDecoration: 'underline',
+		color: 'orange.dark',
+		_hover: { color: 'orange.darkHover' },
+	};
+
 	return (
 		<Container maxW={'7xl'}>
 			<Stack
@@ -22,7 +30,7 @@ const Hero = () => {
 				py={{ base: 4, md: 14 }}
 				direction={{ base: 'column', md: 'row' }}
 			>
-				<Stack flex={1} spacing={{ base: 5, md: 10 }}>
+				<Stack flex={1} spacing={{ base: 4, md: 8 }}>
 					<Heading
 						lineHeight={1.1}
 						fontWeight={600}
@@ -47,14 +55,25 @@ const Hero = () => {
 						<br />
 						<Text as={'span'}>deserves food and community support</Text>
 					</Heading>
-					<Text color={'gray.500'}>
-						We are a food solidarity collective tackling food poverty in
-						Cambridge by offering free, hot, plant-based meals to those who need
-						them every Tuesday, Thursday and Sunday.
-					</Text>
+					<Stack>
+						<Text color={'gray.500'}>
+							We are a food solidarity collective tackling food poverty in
+							Cambridge since 2020 by offering free, hot, plant-based meals
+							to those who need them every Tuesday, Thursday and Sunday.
+						</Text>
+						<Text>
+							<Link
+								href="/about"
+								{...linkStyle}
+							>Find out more about what we do</Link>.
+						</Text>
+					</Stack>
 					<Stack
-						spacing={{ base: 4, sm: 6 }}
+						justifyContent="space-evenly"
 						direction={{ base: 'column', sm: 'row' }}
+						spacing={{ base: 4, sm: 6 }}
+						textAlign="center"
+						width="100%"
 					>
 						<Link href="https://bit.ly/CCKnewvolunteers" isExternal>
 							<Button
@@ -74,17 +93,31 @@ const Hero = () => {
 								Request meals
 							</Button>
 						</Link>
-						<Link href="mailto:cambscommunitykitchen@gmail.com" isExternal>
+						<Link href="https://opencollective.com/cambridge-community-kitchen#category-CONTRIBUTE" isExternal>
 							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
-								Email us
-							</Button>
-						</Link>
-						<Link href="sms://+447908661681" isExternal>
-							<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
-								Text us: 07908 661681
+								Donate
 							</Button>
 						</Link>
 					</Stack>
+					<Text color={'gray.500'}>
+						For other enquiries, please email
+						{' '}
+						<Link
+							href="mailto:cambscommunitykitchen@gmail.com"
+							{...linkStyle}
+						>
+							cambscommunitykitchen@gmail.com
+						</Link>:
+						this inbox is checked by volunteers a few times a week.
+						If you do not have access to email, you can send us a text message at
+						{' '}
+						<Link
+							href="sms://+447908661681"
+							{...linkStyle}
+						>
+							07908 661681
+						</Link>; messages to this number will be checked at the same time as emails.
+					</Text>
 				</Stack>
 				<Flex
 					display={useBreakpointValue({ base: 'none', md: 'flex' })}

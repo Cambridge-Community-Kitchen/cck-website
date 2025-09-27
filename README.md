@@ -2,20 +2,28 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Ensure you have a recent copy of node and npm/yarn then run:
+Ensure you have the correct version of node installed, then install
+dependencies:
 
 ```bash
+# if using nvm
+nvm use
+
+# These should match:
+node -v
+cat .nvmrc
+
+# To install dependencies,
 npm install
-# or
-yarn install
 ```
 
 ### Environment variables
 
-If you have access to the CMS at https://app.hygraph.com, visit the CCK project, and under 'Settings', retrieve the read-only content API URL, and set it (perhaps in a file like `.bashrc`):
+Sign into opencollective and generate an opencollective API token (do not add
+any scopes, it just needs to grab open-access data).
 
 ```
-GRAPHCMS_URL=https://eu-central-1.cdn.hygraph.com/content/.../master
+export OPENCOLLECTIVE_API_TOKEN=f00df00df00df00df00df00df00df00df00df00d
 ```
 
 ### Running the server locally
@@ -24,8 +32,6 @@ Once your environment is set up, run the development server as follows:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
