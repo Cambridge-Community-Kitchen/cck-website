@@ -1,8 +1,9 @@
 import LayoutContainer from '@components/layout-container';
 import { NextSeo } from 'next-seo';
-import { Box, Heading, useBreakpointValue, Flex } from '@chakra-ui/react';
+import { Box, Heading, useBreakpointValue, Flex, Button, Stack } from '@chakra-ui/react';
 import { SanitizedHtml } from '@components/html/SanitizedHtml';
 import { getCollectiveDescription } from '@services/opencollective';
+import Link from 'next/link';
 
 const About = ({ page }) => {
 	return (
@@ -28,6 +29,45 @@ const About = ({ page }) => {
 							About Cambridge Community Kitchen
 						</Heading>
 						<SanitizedHtml html={page} />
+
+					<Stack
+						marginTop={{ base: 4, sm: 6 }}
+						direction={{ base: 'column', sm: 'row' }}
+						justifyContent="space-evenly"
+						spacing={{ base: 4, sm: 6 }}
+						textAlign="center"
+						width="100%"
+					>
+						{
+							[
+								{
+									href: '/',
+									label: 'Home page',
+								},
+								{
+									href: 'https://bit.ly/CCKnewvolunteers',
+									label: 'Volunteer',
+								},
+								{
+									href: 'https://bit.ly/CCKrequest',
+									label: 'Request meals',
+								},
+								{
+									href: '/blog',
+									label: 'News',
+								}
+							].map(
+								(item) => (
+									<Link href={item.href} key={item.href}>
+										<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+											{item.label}
+										</Button>
+									</Link>
+								)
+							)
+						}
+					</Stack>
+
 					</Box>
 				</Flex>
 			</LayoutContainer>
