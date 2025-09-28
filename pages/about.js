@@ -1,9 +1,9 @@
 import LayoutContainer from '@components/layout-container';
 import { NextSeo } from 'next-seo';
-import { GraphQLClient } from 'graphql-request';
-import ReactMarkdown from 'react-markdown';
-import { Box, Heading, useBreakpointValue, Flex } from '@chakra-ui/react';
-import styles from './blog/post.module.scss';
+import { Box, Heading, useBreakpointValue, Flex, Button, Stack } from '@chakra-ui/react';
+import { SanitizedHtml } from '@components/html/SanitizedHtml';
+import { getCollectiveDescription } from '@services/opencollective';
+import Link from 'next/link';
 
 const About = ({ page }) => {
 	return (
@@ -26,11 +26,48 @@ const About = ({ page }) => {
 						mb={8}
 					>
 						<Heading as="h1" mb={8}>
-							{page.title}
+							About Cambridge Community Kitchen
 						</Heading>
-						<ReactMarkdown className={styles.content}>
-							{page.content.markdown}
-						</ReactMarkdown>
+						<SanitizedHtml html={page} />
+
+					<Stack
+						marginTop={{ base: 4, sm: 6 }}
+						direction={{ base: 'column', sm: 'row' }}
+						justifyContent="space-evenly"
+						spacing={{ base: 4, sm: 6 }}
+						textAlign="center"
+						width="100%"
+					>
+						{
+							[
+								{
+									href: '/',
+									label: 'Home page',
+								},
+								{
+									href: 'https://bit.ly/CCKnewvolunteers',
+									label: 'Volunteer',
+								},
+								{
+									href: 'https://bit.ly/CCKrequest',
+									label: 'Request meals',
+								},
+								{
+									href: '/blog',
+									label: 'News',
+								}
+							].map(
+								(item) => (
+									<Link href={item.href} key={item.href}>
+										<Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+											{item.label}
+										</Button>
+									</Link>
+								)
+							)
+						}
+					</Stack>
+
 					</Box>
 				</Flex>
 			</LayoutContainer>
@@ -39,24 +76,11 @@ const About = ({ page }) => {
 };
 
 export async function getStaticProps() {
-	const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL);
-
-	const { page } = await graphcms.request(`
-	{
-		page(where: {slug: "about"}) {
-			content {
-				markdown
-			}
-			title
-		}
-	}
-	`);
-
 	return {
 		props: {
-			page,
+			page: await getCollectiveDescription()
 		},
-		revalidate: 10,
+		revalidate: 10800, // cache for 3 hours
 	};
 }
 

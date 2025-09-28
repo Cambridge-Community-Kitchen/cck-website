@@ -197,11 +197,7 @@ const NAV_ITEMS = [
 		href: '/about',
 	},
 	{
-		label: 'Events',
-		href: '/events',
-	},
-	{
-		label: 'Blog',
+		label: 'News',
 		href: '/blog',
 	},
 	{
