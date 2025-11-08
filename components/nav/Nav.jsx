@@ -205,4 +205,9 @@ const NAV_ITEMS = [
 		href: 'https://bit.ly/CCKwelcomepack',
 		newWindow: true,
 	},
+	{
+		label: 'Eating with us',
+		href: 'https://docs.google.com/document/d/1L5wuLgAPOff6LkUzS_BBgy4C5rdb4VYM2q42WHjqhcE',
+		newWindow: true,
+	},
 ];
